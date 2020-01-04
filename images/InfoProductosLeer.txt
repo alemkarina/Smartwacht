@@ -1,0 +1,64 @@
+preguntasafrecuentes.php
+contactanos.php
+registro.php
+loguin.php
+
+
+"nombre" => "",
+"Introdescripción" => "",
+"Descripción" => "",
+"Imagen" => "url",
+"Precio normal" => 600,
+"Precio Avatar" => 500,
+
+
+Nombre: Huawei Honor 4
+Introdescripción: Mejorá tu experiencia deportiva
+Descripción = Si te gusta el deporte, deberías saber que la Honor Band 4 es una opción muy interesante para las personas aficionadas al running, el ciclismo o incluso la natación, ya que la pulsera cuenta con una resistencia al agua hasta profundidades de 50 metros e incluso es capaz de reconocer las brazadas durante la natación.
+Imagen = \Nuevo- Avatar\Huawei Honor 4.png
+Precio normal = $2.839
+Precio Avatar = $2.000
+
+
+Nombre: Samsung Galaxy Active
+Introdescripción: Además de registrar tus progresos, te da consejos para que siempre estés en la primera línea de juego.
+Descripción = Seguí con tu estilo deportivo vayas donde vayas. El Galaxy Watch Active tiene un diseño discreto y ligero con una pantalla que te permite ver rápidamente, y sin complicaciones todos tus progresos camino a la línea de llegada. Además, tenés una gran variedad de correas a tu disposición para combinar con todos tus estilos.
+Imagen = \Nuevo- Avatar\Samsung Galaxy Active.png
+Precio normal = $14.999
+Precio Avatar = $13.500
+
+
+Nombre: Xiaomi Amazfit Stratos
+Introdescripción: Además de registrar tus progresos, te da consejos para que siempre estés en la primera línea de juego.
+Descripción = Seguí con tu estilo deportivo vayas donde vayas. El Galaxy Watch Active tiene un diseño discreto y ligero con una pantalla que te permite ver rápidamente, y sin complicaciones todos tus progresos camino a la línea de llegada. Además, tenés una gran variedad de correas a tu disposición para combinar con todos tus estilos.
+Imagen = \Nuevo- Avatar\img\Xiaomi Amazfit Stratos.png
+Precio normal = $13.999
+Precio Avatar = $12.500
+
+Garantia = \Nuevo- Avatar\img\0101.png
+Envio = \Nuevo- Avatar\img\44279.png
+Pago = \Nuevo- Avatar\img\48635.png
+
+Beneficios
+yaluse.com.ar
+
+Envío Gratis 
+Pago seguro
+
+
+
+
+
+
+
+
+LG
+Smartwatch Reloj Lg Lmw315 Wifi Bluetooth Resistente Agua
+
+
+Samsung
+Smartwatch Samsung Galaxy Watch Active Bluetooth
+
+
+Motorola
+Smart Watch Motorola Moto 360
