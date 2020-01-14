@@ -350,8 +350,8 @@
 				<!-- End Mobile Menu -->
 	            <div class="mobile-menu d-block d-lg-none">
 	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
+	            <!-- Mobile Menu -->
+			</div>
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
@@ -397,21 +397,16 @@
 							<form action="#">
 								<div class="account__form">
 									<div class="input__box">
-										<label>Username or email address <span>*</span></label>
-										<input type="text">
+										<label>Email address <span>*</span></label>
+										<input type="email">
 									</div>
 									<div class="input__box">
 										<label>Password<span>*</span></label>
-										<input type="text">
+										<input type="password">
 									</div>
 									<div class="form__btn">
 										<button>Login</button>
-										<label class="label-for-checkbox">
-											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
-											<span>Remember me</span>
-										</label>
 									</div>
-									<a class="forget_pass" href="#">Lost your password?</a>
 								</div>
 							</form>
 						</div>
@@ -422,16 +417,29 @@
 							<form action="#">
 								<div class="account__form">
 									<div class="input__box">
-										<label>Email address <span>*</span></label>
-										<input type="email">
+										<label for="username" >Username<span>*</span></label>
+										<input type="text" class="form-control" id="username" name="username">
 									</div>
 									<div class="input__box">
-										<label>Password<span>*</span></label>
-										<input type="password">
+										<label for="email">Email address <span>*</span></label>
+										<input type="email" class="form-control" id="email" name="email">
+									</div>
+									<div class="input__box">
+										<label for="pass">Password<span>*</span></label>
+										<input type="password" class="form-control" id="pass" name="pass">
+									</div>
+									<div class="input__box">
+										<label for="repass">Repeat password<span>*</span></label>
+										<input type="password" class="form-control" id="repass" name="repass">
 									</div>
 									<div class="form__btn">
 										<button>Register</button>
+										<label class="label-for-checkbox">
+											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+											<span>Remember me</span>
+										</label>
 									</div>
+									<a class="forget_pass" href="#">Lost your password?</a>
 								</div>
 							</form>
 						</div>
@@ -495,7 +503,7 @@
 			</div>
 		</footer>
 		<!-- //Footer Area -->
-		
+
 	</div>
 	<!-- //Main wrapper -->
 
@@ -505,6 +513,6 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
-	
+
 </body>
 </html>
