@@ -472,14 +472,17 @@ if ($_POST) {
 									<div class="input__box">
 										<label for="email">Email address <span>*</span></label>
 										<input type="text" class="form-control" id="email" name="email" >
+										<small><?= isset($arrayDeErrores["email"]) ? $arrayDeErrores["email"] : "" ?></small>
 									</div>
 									<div class="input__box">
 										<label for="pass">Password<span>*</span></label>
 										<input type="password" class="form-control" id="pass" name="pass">
+										<small><?= isset($arrayDeErrores["pass"]) ? $arrayDeErrores["pass"] : "" ?></small>
 									</div>
 									<div class="input__box">
 										<label for="repass">Repeat password<span>*</span></label>
 										<input type="password" class="form-control" id="repass" name="repass">
+										<small><?= isset($arrayDeErrores["repass"]) ? $arrayDeErrores["repass"] : "" ?></small>
 									</div>
 									<div class="form__btn">
 										<button>Register</button>
