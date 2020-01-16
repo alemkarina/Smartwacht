@@ -1,7 +1,8 @@
-﻿<?php
+	﻿<?php
 
 require_once 'controladores/funciones.php';
 
+$arrayDeErrores = "";
 //retorna un array de errores
 if ($_POST) {
 	$arrayDeErrores = validarRegistracion($_POST);
@@ -25,17 +26,18 @@ if ($_POST) {
 		// arregla el array sacando el ultimo que es vacio
 		array_pop($explodeDeUsuarios);
 		//algo que no entendi
-		foreach ($explodeDeUsuarios as $usuario) {
-			$user = json_decode($usuario, true);
-			if($usuario["email"] == $_POST["email"]){
-				if (password_verify($_POST["pass"], $usuario["pass"])) {
-					header('Location: index.html');
-				}
+		// foreach ($explodeDeUsuarios as $usuario) {
+		// 	$user = (json_decode($usuario,true));
+		// 	if ($usuario["email"] == $_POST["email"]) {
+		// 		if (password_verify($_POST["pass"], $usuario["pass"]) ) {
+		// 			header("Location: index.html");
+		// 		}
+		// 	}
+		// 		}
 			}
 		}
-	}
 
-}
+
 ?>
 
 <!doctype html>
@@ -53,9 +55,9 @@ if ($_POST) {
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -120,11 +122,11 @@ if ($_POST) {
 											<li><a href="shop-grid.html">Hombre </a></li>
 											<li><a href="shop-grid.html">Niños </a></li>
 																				</ul>
-										
-									</div>																	
-							
-							
-							
+
+									</div>
+
+
+
 								</nav>
 					</div>
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
@@ -152,7 +154,7 @@ if ($_POST) {
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<!-- Start Shopping Cart 
+														<!-- Start Shopping Cart
 														<a href="product-details.html"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
@@ -239,10 +241,10 @@ if ($_POST) {
 														<li>Portugues</li>
 																											</ul>
 												</div>
-											<!-- End Shopping Cart 
+											<!-- End Shopping Cart
 											</div>
 										</div>
-										
+
 										<div class="switcher-currency">
 											<strong class="label switcher-label">
 												<span>Select Store</span>
@@ -281,8 +283,8 @@ if ($_POST) {
 						</ul>
 					</div>
 				</div>
-				-->	
-				<!-- Start Mobile Menu 
+				-->
+				<!-- Start Mobile Menu
 				<div class="row d-none">
 					<div class="col-lg-12 d-none">
 						<nav class="mobilemenu__nav">
@@ -327,8 +329,8 @@ if ($_POST) {
 				<!-- End Mobile Menu -->
 	            <div class="mobile-menu d-block d-lg-none">
 	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
+	            <!-- Mobile Menu -->
+			</div>
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
@@ -347,7 +349,7 @@ if ($_POST) {
 		</div>
 		<!-- End Search Popup -->
 
-        	<!-- Start Single Slide 
+        	<!-- Start Single Slide
 	        <div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
 	            <div class="container">
 	            	<div class="row">
@@ -364,8 +366,8 @@ if ($_POST) {
 	            	</div>
 	            </div>
 			</div>
-			--> 
-			<!-- End Single Slide -->		
+			-->
+			<!-- End Single Slide -->
         </div>
 		<!-- Start Search Popup -->
 		<div class="box-search-content search_active block-bg close__top">
@@ -436,23 +438,23 @@ if ($_POST) {
 								<div class="account__form">
 									<div class="input__box">
 										<label for="username" >Nombre de usuario<span>*</span></label>
-										<input type="text" class="form-control" id="username" name="username">
-										<small><?= isset($arrayDeErrores["username"]) ? $arrayDeErrores["username"] : "" ?></small>
+										<input type="text" class="form-control" id="username" name="username" value=" <?= persistirDato($arrayDeErrores , "username") ?>">
+										<small class="text-danger"><?= isset($arrayDeErrores["username"]) ? $arrayDeErrores["username"] : "" ?></small>
 									</div>
 									<div class="input__box">
 										<label for="email">Email <span>*</span></label>
-										<input type="text" class="form-control" id="email" name="email" >
-										<small><?= isset($arrayDeErrores["email"]) ? $arrayDeErrores["email"] : "" ?></small>
+										<input type="email" class="form-control" id="email" name="email" value=" <?= persistirDato($arrayDeErrores, "email") ?> ">
+										<small class="text-danger"><?= isset($arrayDeErrores["email"]) ? $arrayDeErrores["email"] : "" ?></small>
 									</div>
 									<div class="input__box">
 										<label for="pass">Clave<span>*</span></label>
 										<input type="password" class="form-control" id="pass" name="pass">
-										<small><?= isset($arrayDeErrores["pass"]) ? $arrayDeErrores["pass"] : "" ?></small>
+										<small class="text-danger"><?= isset($arrayDeErrores["pass"]) ? $arrayDeErrores["pass"] : "" ?></small>
 									</div>
 									<div class="input__box">
 										<label for="repass">Repetir Clave<span>*</span></label>
 										<input type="password" class="form-control" id="repass" name="repass">
-										<small><?= isset($arrayDeErrores["repass"]) ? $arrayDeErrores["repass"] : "" ?></small>
+										<small class="text-danger"><?= isset($arrayDeErrores["repass"]) ? $arrayDeErrores["repass"] : "" ?></small>
 									</div>
 									<div class="form__btn">
 										<button>Register</button>
@@ -525,7 +527,7 @@ if ($_POST) {
 			</div>
 		</footer>
 		<!-- //Footer Area -->
-		
+
 	</div>
 	<!-- //Main wrapper -->
 
@@ -535,6 +537,6 @@ if ($_POST) {
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
-	
+
 </body>
 </html>
