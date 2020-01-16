@@ -36,7 +36,7 @@ function validarRegistracion($unArray){
 		if (empty($unArray["pass"])) {
 			$error["pass"] = "Este campo no puede estár vacio.";
 		}elseif (strlen($unArray["pass"]) < 6) {
-			$error["username"] = "Tu password debe tener al menos 6 caracteres.";
+			$error["pass"] = "Tu password debe tener al menos 6 caracteres.";
 		}else {
 			// Todo bien
 		}
@@ -62,9 +62,22 @@ function validarRegistracion($unArray){
 	}
 }
 
+function persistirDato($arrayE,$campo){
+	if (isset($arrayE[$campo]) ) {
+		return "";
+	}else {
+		if (isset($_POST[$campo]) ) {
+			echo $_POST[$campo];
+		}
+	}
+}
 
-
-
+function abrirBBDD($unArchivo){
+	$usuariosGuardados = file_get_contents($unArchivo);
+	$explodeDeUsuarios = explode(PHP_EOL, $usuariosGuardados);
+	array_pop($explodeDeUsuarios);
+	return $explodeDeUsuarios;
+}
 
 	function armarArrayUsuario(){
 
