@@ -14,7 +14,7 @@ if ($_POST) {
 			if ($_POST["email"] == $userFinal["email"]) {
 				if (password_verify($_POST["pass"], $userFinal["pass"])) {
 					header("Location: index.html");
-					exit;
+		
 				}
 			}
 		}
