@@ -19,21 +19,17 @@ if ($_POST) {
 		file_put_contents('usuarios.json', $jsonDeUsuario . PHP_EOL, FILE_APPEND );
 		// *******************************************************************
 
-		//                   rescato la base de datos
-		$usuariosGuardados = file_get_contents('usuarios.json');
-		//                   corta el string a partir de php_eol y lo vuelve array asociativo
-		$explodeDeUsuarios = explode(PHP_EOL,$usuariosGuardados);
-		// arregla el array sacando el ultimo que es vacio
-		array_pop($explodeDeUsuarios);
-		//algo que no entendi
-		// foreach ($explodeDeUsuarios as $usuario) {
-		// 	$user = (json_decode($usuario,true));
-		// 	if ($usuario["email"] == $_POST["email"]) {
-		// 		if (password_verify($_POST["pass"], $usuario["pass"]) ) {
-		// 			header("Location: index.html");
-		// 		}
-		// 	}
-		// 		}
+		//obtengo el contenido del json /rescato la base de datos
+		$arrayDeUsuarios = abrirBBDD("usuarios.json");
+		foreach ($arrayDeUsuarios as $usuarioJson) {
+			$userFinal = json_decode($usuarioJson, true);
+			if ($_POST["email"] == $userFinal["email"]) {
+				if (password_verify($_POST["pass"], $userFinal["pass"])) {
+					header("Location: index.html");
+
+				}
+			}
+		}
 			}
 		}
 
