@@ -25,7 +25,13 @@ if ($_POST) {
 			$userFinal = json_decode($usuarioJson, true);
 			if ($_POST["email"] == $userFinal["email"]) {
 				if (password_verify($_POST["pass"], $userFinal["pass"])) {
-					header("Location: index.html");
+					$_SESSION["email"] = $userFinal["email"];
+					if (isset($_POST["recordarme"]) && $_POST["recordarme"] == "forever") {
+						//creamos cookies
+						setcookie("userEmail",$userFinal["email"], time() + 60 * 60 * 24 * 7);
+						setcookie("userPass",$userFinal["pass"], time() + 60 * 60 * 24 * 7);
+					}
+					header("Location: index.php");
 
 				}
 			}
@@ -455,7 +461,7 @@ if ($_POST) {
 									<div class="form__btn">
 										<button>Register</button>
 										<label class="label-for-checkbox">
-											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+											<input id="recordarme" class="input-checkbox" name="recordarme" value="forever" type="checkbox">
 											<span>Recordarme</span>
 										</label>
 									</div>
