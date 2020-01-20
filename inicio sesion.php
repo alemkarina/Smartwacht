@@ -1,42 +1,25 @@
 ﻿<?php
 
 require_once 'controladores/funciones.php';
-
+$arrayDeErrores = "";
 //retorna un array de errores
 if ($_POST) {
 	$arrayDeErrores = validarRegistracion($_POST);
 	if ($arrayDeErrores) {
-		//Registro al usuario
-		$usuarioFinal = [
-			"username" => trim($_POST["username"]),
-			"email" => $_POST["email"],
-			"pass" => password_hash( $_POST["pass"], PASSWORD_DEFAULT )
-		];
-		//Enviar a la base de datos $usuarioFinal
-		$jsonDeUsuario = json_encode($usuarioFinal);
-		//              a donde escribo, lo que escribo, salto de linea, suma un nuevo usuario
-		file_put_contents('usuarios.json', $jsonDeUsuario . PHP_EOL, FILE_APPEND );
-		// *******************************************************************
-
-		//                   rescato la base de datos
-		$usuariosGuardados = file_get_contents('usuarios.json');
-		//                   corta el string a partir de php_eol y lo vuelve array asociativo
-		$explodeDeUsuarios = explode(PHP_EOL,$usuariosGuardados);
-		// arregla el array sacando el ultimo que es vacio
-		array_pop($explodeDeUsuarios);
-		//algo que no entendi
-		foreach ($explodeDeUsuarios as $usuario) {
-			$user = json_decode($usuario, true);
-			if($usuario["email"] == $_POST["email"]){
-				if (password_verify($_POST["pass"], $usuario["pass"])) {
-					header('Location: index.html');
+		// Logueo al usuario
+		//obtengo el contenido del json
+		$arrayDeUsuarios = abrirBBDD("usuarios.json");
+		foreach ($arrayDeUsuarios as $usuarioJson) {
+			$userFinal = json_decode($usuarioJson, true);
+			if ($_POST["email"] == $userFinal["email"]) {
+				if (password_verify($_POST["pass"], $userFinal["pass"])) {
+					header("Location: index.html");
+		
 				}
 			}
 		}
-	}
-
-}
-
+		}
+	 }
 ?>
 
 <!doctype html>
@@ -411,12 +394,14 @@ if ($_POST) {
 							<form action="#" method="post">
 								<div class="account__form">
 									<div class="input__box">
-										<label>Email <span>*</span></label>
-										<input type="email">
+										<label for="email">Email <span>*</span></label>
+										<input type="email" class="form-control" id="email" name="email" value=" <?= persistirDato($arrayDeErrores, "email") ?> ">
+										<small class="text-danger"><?= isset($arrayDeErrores["email"]) ? $arrayDeErrores["email"] : "" ?></small>
 									</div>
 									<div class="input__box">
-										<label>Clave<span>*</span></label>
-										<input type="password">
+										<label for="pass">Clave<span>*</span></label>
+										<input type="password" class="form-control" id="pass" name="pass">
+										<small class="text-danger"><?= isset($arrayDeErrores["pass"]) ? $arrayDeErrores["pass"] : "" ?></small>
 									</div>
 									<div class="form__btn">
 										<button>Login</button>
@@ -430,26 +415,6 @@ if ($_POST) {
 							</form>
 						</div>
 					</div>
-					<!--<div class="col-lg-6 col-12">
-						<div class="my__account__wrapper">
-							<h3 class="account__title">Register</h3>
-							<form action="#">
-								<div class="account__form">
-									<div class="input__box">
-										<label>Email address <span>*</span></label>
-										<input type="email">
-									</div>
-									<div class="input__box">
-										<label>Password<span>*</span></label>
-										<input type="password">
-									</div>
-									<div class="form__btn">
-										<button>Register</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>-->
 				</div>
 			</div>
 		</section>
