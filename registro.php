@@ -18,22 +18,6 @@ if ($_POST) {
 		file_put_contents('usuarios.json', $jsonDeUsuario . PHP_EOL, FILE_APPEND );
 		// *******************************************************************
 
-<<<<<<< HEAD
-		//obtengo el contenido del json /rescato la base de datos
-		$arrayDeUsuarios = abrirBBDD("usuarios.json");
-		foreach ($arrayDeUsuarios as $usuarioJson) {
-			$userFinal = json_decode($usuarioJson, true);
-			if ($_POST["email"] == $userFinal["email"]) {
-				if (password_verify($_POST["pass"], $userFinal["pass"])) {
-					$_SESSION["email"] = $userFinal["email"];
-					if (isset($_POST["recordarme"]) && $_POST["recordarme"] == "forever") {
-						//creamos cookies
-						setcookie("userEmail",$userFinal["email"], time() + 60 * 60 * 24 * 7);
-						setcookie("userPass",$userFinal["pass"], time() + 60 * 60 * 24 * 7);
-					}
-					header("Location: index.php");
-
-=======
 		//                   rescato la base de datos
 		$usuariosGuardados = file_get_contents('usuarios.json');
 		//                   corta el string a partir de php_eol y lo vuelve array asociativo
@@ -46,7 +30,6 @@ if ($_POST) {
 			if($usuario["email"] == $_POST["email"]){
 				if (password_verify($_POST["pass"], $usuario["pass"])) {
 					header('Location: index.html');
->>>>>>> f3b0aa6ab5f54ff3925578fb27013fade95fd847
 				}
 			}
 		}
@@ -467,7 +450,7 @@ move_uploaded_file($_file["Imagen"]["temp_name"],
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Registrate</h3>
-							<form action="Inicio.php" method="post" enctype="multipart/form-data">
+							<form action="index.php" method="post" enctype="multipart/form-data">
 								<div class="account__form">
 									<div class="input__box">
 										<label for="username" >Nombre de usuario<span>*</span></label>
@@ -499,7 +482,7 @@ move_uploaded_file($_file["Imagen"]["temp_name"],
 										<input type="submit" name="" value="Registrate">
 
 										<label class="label-for-checkbox">
-											<input id="recordarme" class="input-checkbox" name="recordarme" value="forever" type="checkbox">
+											<input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
 											<span>Recordarme</span>
 										</label>
 									</div>
